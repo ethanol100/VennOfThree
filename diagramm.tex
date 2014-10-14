@@ -1,0 +1,45 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes,backgrounds}
+\usepackage{verbatim}
+\begin{document}
+\pagestyle{empty}
+
+\input{circle.tex}
+
+\begin{tikzpicture}
+    \fill[red!20!white] \firstcircle;
+    \fill[green!20!white] \secondcircle;
+    \fill[blue!20!white] \thirdcircle;
+    \begin{scope}
+      \clip \firstcircle;
+      \fill[red!50!green!20!white] \secondcircle;
+    \end{scope}
+    \begin{scope}
+      \clip \firstcircle;
+      \fill[red!50!blue!20!white] \thirdcircle;
+    \end{scope}
+    \begin{scope}
+      \clip \secondcircle;
+      \fill[green!50!blue!20!white] \thirdcircle;
+    \end{scope}
+    \begin{scope}
+      \clip \firstcircle;
+      \clip \secondcircle;
+      \fill[red!50!green!50!blue!20!white] \thirdcircle;
+    \end{scope}
+    \draw \firstcircle;
+    \draw \secondcircle;
+    \draw \thirdcircle;
+    \node at (0,0) {123};
+    \node [red, align=center] at (160:4.25) {456};
+    \node at (162:2.55) {789};
+    \node [green!70!black, align=center]  at (10:5) {012};
+    \node at (10:3) {1375};
+    \node [blue, align=center] at (-140:4) {345};
+    \node at (-121.463490786527:2.6) {678};
+    \node at (110:2) {901};
+    \node at (280:2.2) {234};
+    \node at (195:2.275) {567};
+\end{tikzpicture}
+\end{document}
